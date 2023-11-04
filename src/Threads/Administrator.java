@@ -9,7 +9,10 @@ import DB.Buffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Character.Character;
+import GUI.MainFrame;
 import Primitives.Queue;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
@@ -17,7 +20,13 @@ import Primitives.Queue;
  */
 public class Administrator extends Thread {
 
-    private Buffer buffer;
+    private final Buffer buffer;
+    private final MainFrame window;
+
+    public Administrator(MainFrame window, Buffer buffer) {
+        this.window = window;
+        this.buffer = buffer;
+    }
 
     @Override
     public void run() {
@@ -77,12 +86,52 @@ public class Administrator extends Thread {
                 NintendoFighter = buffer.getNintendoQueue3().dequeue().getData();
             }
 
+            //Revisa para sacar de las colas de refuerzo y meter en la cola de prioridad 1
+            double random = Math.random();
+
+            if ((random < 0.40)) {
+                if (!buffer.getCapcomQueue4().isEmpty()) {
+                    buffer.getCapcomQueue1().queue(buffer.getCapcomQueue4().dequeue().getData());
+                }
+
+                if (!buffer.getNintendoQueue4().isEmpty()) {
+                    buffer.getNintendoQueue1().queue(buffer.getNintendoQueue4().dequeue().getData());
+                }
+            }
+
+            //Ajusta las colas del MainFrame
+            updateQueues(window.getCapcomQ1(), buffer.getCapcomQueue1());
+            updateQueues(window.getCapcomQ2(), buffer.getCapcomQueue2());
+            updateQueues(window.getCapcomQ3(), buffer.getCapcomQueue3());
+            updateQueues(window.getCapcomQ4(), buffer.getCapcomQueue4());
+
+            updateQueues(window.getNintendoQ1(), buffer.getNintendoQueue1());
+            updateQueues(window.getNintendoQ2(), buffer.getNintendoQueue2());
+            updateQueues(window.getNintendoQ3(), buffer.getNintendoQueue3());
+            updateQueues(window.getNintendoQ4(), buffer.getNintendoQueue4());
+
             //Pone en el buffer al peleador que le toca para que el AI lo tome
             buffer.setCapcomFighter(NintendoFighter);
             buffer.setCapcomFighter(CapcomFighter);
 
             buffer.setNumberOfCycles(buffer.getNumberOfCycles() + 1);
 
+        }
+
+    }
+
+    /**
+     * Actualiza el modelo de cada una de las listas del MAinFrame en funcion a
+     * las colas del buffer
+     *
+     * @param list JList - Módulo de lista de Netbeans para el JFrame
+     * @param queue Queue - Cola de personajes
+     */
+    public void updateQueues(JList<String> list, Queue queue) {
+        String[] queueElements = queue.queueToArray();
+        DefaultListModel model = (DefaultListModel) list.getModel();
+        for (String queueElement : queueElements) {
+            model.addElement(queueElement);
         }
 
     }
