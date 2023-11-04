@@ -59,6 +59,7 @@ public class Queue {
         for (int i = 0; i < originalSize; i++) {
             Node pAux = dequeue();
             if (pAux.getTurnsQueued() == 8){
+                pAux.setTurnsQueued(0);
                 qAux.queue(pAux.getData());
             }else{
                 pAux.setTurnsQueued(pAux.getTurnsQueued() + 1);
