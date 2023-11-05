@@ -6,6 +6,7 @@ package Character;
 
 import Enums.CharacterTypeEnum;
 import Enums.CompanyEnum;
+import Enums.TierEnum;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Character {
     private String name;
     private CharacterTypeEnum characterType;
     private CompanyEnum companyType;
+    private TierEnum tier;
     private int power;
 
     public Character() {}
@@ -48,6 +50,10 @@ public class Character {
     public int getPower() {
         return power;
     }
+    
+    public TierEnum getTier() {
+        return tier;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -67,6 +73,10 @@ public class Character {
 
     public void setPower(int power) {
         this.power = power;
+    }
+    
+    public void setTier(TierEnum tier) {
+        this.tier = tier;
     }
     
     

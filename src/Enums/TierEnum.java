@@ -10,4 +10,15 @@ package Enums;
  */
 public enum TierEnum {
     
+    WEAK(0),
+    NORMAL(1),
+    STRONG(2),
+    FIX(3);
+    
+    private final int id;
+
+    private TierEnum(int id) {
+	this.id = id;
+    }
+    
 }
