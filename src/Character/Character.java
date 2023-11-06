@@ -20,15 +20,17 @@ public class Character {
     private CompanyEnum companyType;
     private TierEnum tier;
     private int power;
+    private String image;
 
     public Character() {}
     
-    public Character(int id, String name, CharacterTypeEnum characterType, CompanyEnum companyType ,int power) {
+    public Character(int id, String name, CharacterTypeEnum characterType, CompanyEnum companyType ,int power, String pathToImage) {
         this.id = id;
         this.name = name;
         this.characterType = characterType;
         this.companyType = companyType;
         this.power = power;
+        this.image = pathToImage;
     }
 
     public int getId() {
@@ -77,6 +79,20 @@ public class Character {
     
     public void setTier(TierEnum tier) {
         this.tier = tier;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

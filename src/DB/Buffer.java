@@ -41,6 +41,9 @@ public class Buffer {
     private Character capcomFighter;
     
     
+    //Velocidad de simulacion
+    private double simSpeed;
+    
     /**
      * @return the nintendoCharacters
      */
