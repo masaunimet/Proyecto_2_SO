@@ -17,6 +17,10 @@ public class Buffer {
     private final Character[] nintendoCharacters = new Character[20];
     private final Character[] capcomCharacters = new Character[20];
     
+    //colas de Victoria
+    private Queue capcomWinningQueue;
+    private Queue nintendoWinningQueue;
+    
     //Colas de prioridad Nintendo
     private Queue nintendoQueue1;
     private Queue nintendoQueue2;
@@ -225,7 +229,33 @@ public class Buffer {
     public void setCapcomFighter(Character capcomFighter) {
         this.capcomFighter = capcomFighter;
     }
-    
-    
+
+    /**
+     * @return the nintendoWinningQueue
+     */
+    public Queue getNintendoWinningQueue() {
+        return nintendoWinningQueue;
+    }
+
+    /**
+     * @param nintendoWinningQueue the nintendoWinningQueue to set
+     */
+    public void setNintendoWinningQueue(Queue nintendoWinningQueue) {
+        this.nintendoWinningQueue = nintendoWinningQueue;
+    }
+
+    /**
+     * @return the capcomWinningQueue
+     */
+    public Queue getCapcomWinningQueue() {
+        return capcomWinningQueue;
+    }
+
+    /**
+     * @param capcomWinningQueue the capcomWinningQueue to set
+     */
+    public void setCapcomWinningQueue(Queue capcomWinningQueue) {
+        this.capcomWinningQueue = capcomWinningQueue;
+    }
     
 }
