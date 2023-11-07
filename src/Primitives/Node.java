@@ -10,10 +10,18 @@ public class Node {
     private Character data;
     private Node pNext;
     private int turnsQueued;
+    private int id;
 
     public Node(Character data){
         this.data = data;
     }
+    
+    public Node(Character data, int id){
+        this.data = data;
+        this.id = id;
+    }
+    
+    
     
     /**
      * @return the data
@@ -55,6 +63,20 @@ public class Node {
      */
     public void setTurnsQueued(int turnsQueued) {
         this.turnsQueued = turnsQueued;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
     
     

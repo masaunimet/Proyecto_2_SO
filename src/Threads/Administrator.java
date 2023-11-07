@@ -22,7 +22,9 @@ public class Administrator extends Thread {
 
     private final Buffer buffer;
     private final MainFrame window;
-
+    private int nextId = 0;
+    private final Functions fun = new Functions();
+    
     public Administrator(MainFrame window, Buffer buffer) {
         this.window = window;
         this.buffer = buffer;
@@ -47,7 +49,10 @@ public class Administrator extends Thread {
                     Character nintendoCharacter = buffer.getNintendoCharacters()[randomCharacter];
                     Character capcomCharacter = buffer.getCapcomCharacters()[randomCharacter];
 
-                    //TODO: Meter en la cola correspondiente segun su fuerza (Nota: Hacerlo en una funcion para que al inciar el proyecto no tener que reescribirlo)
+                    fun.queueNewCharacter(nintendoCharacter, nextId, buffer);
+                    nextId++;
+                    fun.queueNewCharacter(capcomCharacter, nextId, buffer);
+                    nextId++;
                 }
 
             }
@@ -134,5 +139,19 @@ public class Administrator extends Thread {
             model.addElement(queueElement);
         }
 
+    }
+
+    /**
+     * @return the nextId
+     */
+    public int getNextId() {
+        return nextId;
+    }
+
+    /**
+     * @param nextId the nextId to set
+     */
+    public void setNextId(int nextId) {
+        this.nextId = nextId;
     }
 }

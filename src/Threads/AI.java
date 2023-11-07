@@ -29,94 +29,95 @@ import java.util.logging.Logger;
  *
  * @author Andres
  */
-public class AI extends Thread{
-    
+public class AI extends Thread {
+
     private Buffer buffer;
-    
-    
+
     @Override
-    public void run(){
-        
-        try {
-            buffer.getS2().release();
-            buffer.getS1().acquire();
-            
-            Character capcom = buffer.getCapcomFighter();
-            Character nintendo = buffer.getNintendoFighter();
-            
-            sleep(1000);
-            
-            if(capcom != null && nintendo != null){
-                
-                int randNum = (int) Math.random() * 100;
+    public void run() {
+        while (true) {
 
-                if(randNum < 40){
+            try {
+                buffer.getS2().release();
+                buffer.getS1().acquire();
 
-                    int capcomBuffs = getBuffBonus(capcom.getCharacterType(), nintendo.getCharacterType());
-                    capcom.setPower(capcomBuffs+capcom.getPower());
+                Character capcom = buffer.getCapcomFighter();
+                Character nintendo = buffer.getNintendoFighter();
 
-                    int nintendoBuffs = getBuffBonus(nintendo.getCharacterType(), capcom.getCharacterType());
-                    nintendo.setPower(nintendoBuffs+nintendo.getPower());
-                    
-                    if(nintendo.getPower() > capcom.getPower())
-                        buffer.getCapcomWinningQueue().queue(nintendo);
-                    else
-                        buffer.getCapcomWinningQueue().queue(capcom);
+                sleep((long) buffer.getSimSpeed());
+
+                if (capcom != null && nintendo != null) {
+
+                    int randNum = (int) Math.random() * 100;
+
+                    if (randNum < 40) {
+
+                        int capcomBuffs = getBuffBonus(capcom.getCharacterType(), nintendo.getCharacterType());
+                        capcom.setPower(capcomBuffs + capcom.getPower());
+
+                        int nintendoBuffs = getBuffBonus(nintendo.getCharacterType(), capcom.getCharacterType());
+                        nintendo.setPower(nintendoBuffs + nintendo.getPower());
+
+                        if (nintendo.getPower() > capcom.getPower()) {
+                            buffer.getCapcomWinningQueue().queue(nintendo);
+                        } else {
+                            buffer.getCapcomWinningQueue().queue(capcom);
+                        }
+                    } else if (randNum < 67) {
+
+                        getToTierQueue(capcom);
+                        getToTierQueue(nintendo);
+                    } else {
+
+                        capcom.setTier(TierEnum.FIX);
+                        getToTierQueue(capcom);
+                        nintendo.setTier(TierEnum.FIX);
+                        getToTierQueue(nintendo);
+                    }
                 }
 
-                else if(randNum < 67){
-                    
-                    getToTierQueue(capcom);
-                    getToTierQueue(nintendo);
-                }
-
-                else{
-                    
-                    capcom.setTier(TierEnum.FIX);
-                    getToTierQueue(capcom);
-                    nintendo.setTier(TierEnum.FIX);
-                    getToTierQueue(nintendo);
-                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
-    
+
     private int getBuffBonus(CharacterTypeEnum characterType, CharacterTypeEnum enemyType) {
-    
-        CharacterTypeEnum [] temp = getGoodAgainst(characterType);
-        
+
+        CharacterTypeEnum[] temp = getGoodAgainst(characterType);
+
         int indexBuff = 0;
         int isNotNull = 0;
-        int i =0;
+        int i = 0;
         boolean buffFound = false;
-        
-        for(CharacterTypeEnum type :temp){
-            
-            if(type != null)
+
+        for (CharacterTypeEnum type : temp) {
+
+            if (type != null) {
                 isNotNull++;
-            
-            if(type == enemyType && !buffFound){
+            }
+
+            if (type == enemyType && !buffFound) {
                 indexBuff = i;
                 buffFound = true;
-            }
-            else
+            } else {
                 i++;
+            }
         }
-        
-        if(buffFound)
-            return isNotNull-indexBuff;
-        else
+
+        if (buffFound) {
+            return isNotNull - indexBuff;
+        } else {
             return 0;
+        }
     }
 
     private CharacterTypeEnum[] getGoodAgainst(CharacterTypeEnum characterType) {
-        
-         CharacterTypeEnum [] goodAgainst =  new CharacterTypeEnum[3];
-        
-        switch(characterType){
+
+        CharacterTypeEnum[] goodAgainst = new CharacterTypeEnum[3];
+
+        switch (characterType) {
             case AIR:
                 goodAgainst[0] = CharacterTypeEnum.FIRE;
                 goodAgainst[1] = CharacterTypeEnum.DARKNESS;
@@ -185,14 +186,14 @@ public class AI extends Thread{
             default:
                 throw new AssertionError(characterType.name());
         }
-        
+
         return goodAgainst;
     }
 
     private void getToTierQueue(Character ch) {
-        
-        switch(ch.getTier()){
-            
+
+        switch (ch.getTier()) {
+
             case WEAK:
                 buffer.getCapcomQueue3().queue(ch);
                 break;

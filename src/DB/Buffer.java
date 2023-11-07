@@ -257,5 +257,19 @@ public class Buffer {
     public void setCapcomWinningQueue(Queue capcomWinningQueue) {
         this.capcomWinningQueue = capcomWinningQueue;
     }
+
+    /**
+     * @return the simSpeed
+     */
+    public double getSimSpeed() {
+        return simSpeed;
+    }
+
+    /**
+     * @param simSpeed the simSpeed to set
+     */
+    public void setSimSpeed(double simSpeed) {
+        this.simSpeed = simSpeed;
+    }
     
 }
