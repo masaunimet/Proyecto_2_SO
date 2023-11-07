@@ -66,7 +66,9 @@ public class AI extends Thread{
 
                 else if(randNum < 67){
                     
+                    capcom.setTier(TierEnum.STRONG);
                     getToTierQueue(capcom);
+                    nintendo.setTier(TierEnum.STRONG);
                     getToTierQueue(nintendo);
                 }
 

@@ -20,8 +20,9 @@ public class Character {
     private CompanyEnum companyType;
     private TierEnum tier;
     private int power;
+    private int tierColdown;
 
-    public Character() {}
+    public Character() {tierColdown = 0;}
     
     public Character(int id, String name, CharacterTypeEnum characterType, CompanyEnum companyType ,int power) {
         this.id = id;
@@ -29,6 +30,7 @@ public class Character {
         this.characterType = characterType;
         this.companyType = companyType;
         this.power = power;
+        tierColdown = 0;
     }
 
     public int getId() {
@@ -79,5 +81,11 @@ public class Character {
         this.tier = tier;
     }
     
+    public int getTierColdown() {
+        return tierColdown;
+    }
     
+    public void setTierColdown(int tierColdown) {
+        this.tierColdown = tierColdown;
+    }
 }
