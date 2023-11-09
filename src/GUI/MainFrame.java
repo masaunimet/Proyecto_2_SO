@@ -60,13 +60,15 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        nintendoFighterName = new javax.swing.JLabel();
+        capcomFighterName1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
+        getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, -1, -1));
 
         jScrollPane2.setViewportView(nintendoQ4);
 
@@ -150,6 +152,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8.setText("Cola Refuerzos");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, -1, -1));
 
+        nintendoFighterName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        nintendoFighterName.setToolTipText("");
+        getContentPane().add(nintendoFighterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 190, 50));
+        getContentPane().add(capcomFighterName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 190, 50));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,6 +212,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel capcomFighterFrame;
+    private javax.swing.JLabel capcomFighterName1;
     private javax.swing.JLabel capcomFighterPicture;
     private javax.swing.JLabel capcomFighterScore;
     private javax.swing.JList<String> capcomQ1;
@@ -229,6 +237,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel nintendoFighterFrame1;
+    private javax.swing.JLabel nintendoFighterName;
     private javax.swing.JLabel nintendoFighterPicture;
     private javax.swing.JLabel nintendoFighterScore;
     private javax.swing.JList<String> nintendoQ1;

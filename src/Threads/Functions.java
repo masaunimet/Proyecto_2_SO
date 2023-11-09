@@ -15,31 +15,33 @@ import Primitives.Node;
  */
 public class Functions {
 
-    public void queueNewCharacter(Character character, int id, Buffer buffer) {
+    public void queueNewCharacter(Character character, Buffer buffer) {
         switch (character.getCompanyType()) {
             case CAPCOM:
                 switch (character.getTier()) {
                     case WEAK:
-                        buffer.getCapcomQueue3().queue(character, id);
+                        //TODO: Enconlar personaje de capcom en su cola
                         break;
                     case NORMAL:
-                        buffer.getCapcomQueue2().queue(character, id);
+                        //TODO: Enconlar personaje de capcom en su cola
                         break;
                     case STRONG:
-                        buffer.getCapcomQueue3().queue(character, id);
+                        //TODO: Enconlar personaje de capcom en su cola
+
                         break;
                 }
                 break;
             case NINTENDO:
                 switch (character.getTier()) {
                     case WEAK:
-                        buffer.getNintendoQueue3().queue(character, id);
+                        //TODO: Enconlar personaje de nintendo en la colabuffer.getNintendoQueue3().queue(character, id);
+
                         break;
                     case NORMAL:
-                        buffer.getNintendoQueue2().queue(character, id);
+                        //TODO: Enconlar personaje de nintendo en la cola
                         break;
                     case STRONG:
-                        buffer.getNintendoQueue3().queue(character, id);
+                        //TODO: Enconlar personaje de nintendo en la cola
                         break;
                 }
         }
