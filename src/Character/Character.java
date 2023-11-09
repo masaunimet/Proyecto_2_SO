@@ -21,8 +21,9 @@ public class Character {
     private TierEnum tier;
     private int power;
     private String image;
+    private int tierColdown;
 
-    public Character() {}
+    public Character() {tierColdown = 0;}
     
     public Character(int id, String name, CharacterTypeEnum characterType, CompanyEnum companyType ,int power, String pathToImage) {
         this.id = id;
@@ -31,6 +32,7 @@ public class Character {
         this.companyType = companyType;
         this.power = power;
         this.image = pathToImage;
+        tierColdown = 0;
     }
 
     public int getId() {
@@ -95,5 +97,11 @@ public class Character {
         this.image = image;
     }
     
+    public int getTierColdown() {
+        return tierColdown;
+    }
     
+    public void setTierColdown(int tierColdown) {
+        this.tierColdown = tierColdown;
+    }
 }

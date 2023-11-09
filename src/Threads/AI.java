@@ -41,6 +41,10 @@ public class AI extends Thread {
                 buffer.getS2().release();
                 buffer.getS1().acquire();
 
+                            } catch (InterruptedException ex) {
+                Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
+
+                            }
                 Character capcom = buffer.getCapcomFighter();
                 Character nintendo = buffer.getNintendoFighter();
 
@@ -76,12 +80,26 @@ public class AI extends Thread {
                     }
                 }
 
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
+
+                else if(randNum < 67){
+                    
+                    capcom.setTier(TierEnum.STRONG);
+                    getToTierQueue(capcom);
+                    nintendo.setTier(TierEnum.STRONG);
+                    getToTierQueue(nintendo);
+                }
+
+                else{
+                    
+                    capcom.setTier(TierEnum.FIX);
+                    getToTierQueue(capcom);
+                    nintendo.setTier(TierEnum.FIX);
+                    getToTierQueue(nintendo);
+                }
             }
         }
 
-    }
+    
 
     private int getBuffBonus(CharacterTypeEnum characterType, CharacterTypeEnum enemyType) {
 
