@@ -33,6 +33,8 @@ public class AI extends Thread {
 
     private Buffer buffer;
 
+    
+    //TODO: Hacer que se actualice el MainFrame 
     @Override
     public void run() {
         while (true) {
@@ -41,65 +43,61 @@ public class AI extends Thread {
                 buffer.getS2().release();
                 buffer.getS1().acquire();
 
-                            } catch (InterruptedException ex) {
+            } catch (InterruptedException ex) {
                 Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
 
-                            }
-                Character capcom = buffer.getCapcomFighter();
-                Character nintendo = buffer.getNintendoFighter();
+            }
+            Character capcom = buffer.getCapcomFighter();
+            Character nintendo = buffer.getNintendoFighter();
 
+            try {
                 sleep((long) buffer.getSimSpeed());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-                if (capcom != null && nintendo != null) {
+            int randNum = (int) Math.random() * 100;
+            if (capcom != null && nintendo != null) {
 
-                    int randNum = (int) Math.random() * 100;
+                if (randNum < 40) {
 
-                    if (randNum < 40) {
+                    int capcomBuffs = getBuffBonus(capcom.getCharacterType(), nintendo.getCharacterType());
+                    capcom.setPower(capcomBuffs + capcom.getPower());
 
-                        int capcomBuffs = getBuffBonus(capcom.getCharacterType(), nintendo.getCharacterType());
-                        capcom.setPower(capcomBuffs + capcom.getPower());
+                    int nintendoBuffs = getBuffBonus(nintendo.getCharacterType(), capcom.getCharacterType());
+                    nintendo.setPower(nintendoBuffs + nintendo.getPower());
 
-                        int nintendoBuffs = getBuffBonus(nintendo.getCharacterType(), capcom.getCharacterType());
-                        nintendo.setPower(nintendoBuffs + nintendo.getPower());
-
-                        if (nintendo.getPower() > capcom.getPower()) {
-                            buffer.getCapcomWinningQueue().queue(nintendo);
-                        } else {
-                            buffer.getCapcomWinningQueue().queue(capcom);
-                        }
-                    } else if (randNum < 67) {
-
-                        getToTierQueue(capcom);
-                        getToTierQueue(nintendo);
+                    if (nintendo.getPower() > capcom.getPower()) {
+                        buffer.getCapcomWinningQueue().queue(nintendo);
                     } else {
-
-                        capcom.setTier(TierEnum.FIX);
-                        getToTierQueue(capcom);
-                        nintendo.setTier(TierEnum.FIX);
-                        getToTierQueue(nintendo);
+                        buffer.getCapcomWinningQueue().queue(capcom);
                     }
-                }
+                } else if (randNum < 67) {
 
-
-                else if(randNum < 67){
-                    
-                    capcom.setTier(TierEnum.STRONG);
                     getToTierQueue(capcom);
-                    nintendo.setTier(TierEnum.STRONG);
                     getToTierQueue(nintendo);
-                }
+                } else {
 
-                else{
-                    
                     capcom.setTier(TierEnum.FIX);
                     getToTierQueue(capcom);
                     nintendo.setTier(TierEnum.FIX);
                     getToTierQueue(nintendo);
                 }
+            } else if (randNum < 67) {
+
+                capcom.setTier(TierEnum.STRONG);
+                getToTierQueue(capcom);
+                nintendo.setTier(TierEnum.STRONG);
+                getToTierQueue(nintendo);
+            } else {
+
+                capcom.setTier(TierEnum.FIX);
+                getToTierQueue(capcom);
+                nintendo.setTier(TierEnum.FIX);
+                getToTierQueue(nintendo);
             }
         }
-
-    
+    }
 
     private int getBuffBonus(CharacterTypeEnum characterType, CharacterTypeEnum enemyType) {
 

@@ -22,6 +22,7 @@ public class Administrator extends Thread {
 
     private final Buffer buffer;
     private final MainFrame window;
+    private int nextId = 0;
     private final Functions fun = new Functions();
     
     public Administrator(MainFrame window, Buffer buffer) {
@@ -45,12 +46,15 @@ public class Administrator extends Thread {
                 double random = Math.random();
                 if (random < 0.8) {
                     int randomCharacter = (int) Math.round(20 * Math.random());
+                    
+                    /*TODO: Arreglar esto*/
                     Character nintendoCharacter = buffer.getNintendoCharacters()[randomCharacter];
                     Character capcomCharacter = buffer.getCapcomCharacters()[randomCharacter];
 
+                    
+                    
                     fun.queueNewCharacter(nintendoCharacter, buffer);
                     fun.queueNewCharacter(capcomCharacter, buffer);
-
                 }
 
             }
@@ -137,5 +141,19 @@ public class Administrator extends Thread {
             model.addElement(queueElement);
         }
 
+    }
+
+    /**
+     * @return the nextId
+     */
+    public int getNextId() {
+        return nextId;
+    }
+
+    /**
+     * @param nextId the nextId to set
+     */
+    public void setNextId(int nextId) {
+        this.nextId = nextId;
     }
 }

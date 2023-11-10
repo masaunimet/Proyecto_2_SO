@@ -56,7 +56,23 @@ public class Queue {
         size++;
     }
     
-
+    /**
+     * Recibiendo un personaje, lo encola un personaje nuevo
+     *
+     * @param character - personaje
+     * @param id - es eñ od de personje
+     */
+    public void queue(Character character, int id) {
+        Node pNew = new Node(character, id);
+        if (isEmpty()) {
+            tail.setpNext(pNew);
+            tail = pNew;
+        } else {
+            head = pNew;
+            tail = pNew;
+        }
+        size++;
+    }
 
     /**
      * Desencola el primer nodo de la cola

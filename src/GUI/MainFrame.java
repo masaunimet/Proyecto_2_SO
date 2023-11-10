@@ -62,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         nintendoFighterName = new javax.swing.JLabel();
         capcomFighterName1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 600));
@@ -157,6 +158,9 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(nintendoFighterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 190, 50));
         getContentPane().add(capcomFighterName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 190, 50));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,6 +223,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> capcomQ2;
     private javax.swing.JList<String> capcomQ3;
     private javax.swing.JList<String> capcomQ4;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
