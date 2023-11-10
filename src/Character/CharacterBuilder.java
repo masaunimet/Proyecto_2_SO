@@ -12,33 +12,39 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase para crear Characters
  * @author Masa500
  */
 public class CharacterBuilder {
     
+    //Semaforo para el id del usuario UNICO
     private Semaphore idMutex = new Semaphore(1);
     int nextCharacterId = 0;
     
     public CharacterBuilder(){}
     
+    /**
+     * Crea un Character totalmente random
+     * @return Character
+     */
     public Character CreateCharacter(){
     
         Character ch = new Character();
-        
+        // poder Base random
         int power = (int) Math.random() * 9;
         
         int randNum = (int) Math.random() * 100;
         
         CharacterTypeEnum chType;
         
+        //si el personaje tiene un numero bajo, sera de tipo normal
         if(randNum < CharacterTypeEnum.getNormalPercentage())
             chType = CharacterTypeEnum.NORMAL;
-        
+        //sino
         else{
-            
+            //numero random para saber si es evolucion o no
             boolean isSpecial = Math.random() > CharacterTypeEnum.getEvolPercentage();
-            
+            //Agarra un tipo de elemento (AIRE, AGUA, TIERRA, FUEGO, LUZ O OSCURIDAD)
             chType = CharacterTypeEnum.byId((int) Math.random()*CharacterTypeEnum.getSpecialLimit());
             
             if(isSpecial)
@@ -52,7 +58,11 @@ public class CharacterBuilder {
         
         return ch;
     }
-    
+    /**
+     * Crea un Character basado en el Tier
+     * @param tier CharacterTypeEnum - Tier al cual estara el personaje
+     * @return Character
+     */
     public Character CreateCharacter(TierEnum tier){
     
         Character ch = new Character();
@@ -62,17 +72,18 @@ public class CharacterBuilder {
         
         switch(tier){
             case WEAK:
+                //Si es debil el poder sera de 0-4 y tipo normal
                 power = (int) Math.random() * 4;
                 break;
             case NORMAL:
-                
+                //Indica 2 tipos de posibilidades para Character 
                 boolean normal = Math.random() > CharacterTypeEnum.getNormalPercentage();
-                
+                //Si el character es del tipo normal
                 if(normal){
                     power = (int) Math.random() * 9;
                     break;
                 }
-                
+                //Si el Character tiene un tipo distinto a Normal
                 power = (int) Math.random() * 4;
                 chType = CharacterTypeEnum.byId((int) Math.random()*CharacterTypeEnum.getSpecialLimit());
                 isSpecial = Math.random() > CharacterTypeEnum.getEvolPercentage();
@@ -80,6 +91,7 @@ public class CharacterBuilder {
                     chType = CharacterTypeEnum.byId(chType.getId()+ (1+CharacterTypeEnum.getSpecialLimit()));
                 break;
             case STRONG:
+                //Si es fuerte tiene un tipo distinto a Normal y su poder va de 0 -9
                 power = (int) Math.random() * 9;
                 chType = CharacterTypeEnum.byId((int) Math.random()*CharacterTypeEnum.getSpecialLimit());
                 isSpecial = Math.random() > CharacterTypeEnum.getEvolPercentage();
@@ -100,7 +112,11 @@ public class CharacterBuilder {
         return ch;
     }
     
-    private int getId(){
+    /**
+     * Usa el semaforo para settear el Id UNICO del Character
+     * @return int
+     */
+    public int getId(){
     
         try{
             
@@ -115,6 +131,12 @@ public class CharacterBuilder {
         return nextCharacterId;
     }
 
+    /**
+     * Settea el TierEnum al character
+     * @param chType CharacterTypeEnum - Tipó de Character
+     * @param power int - poder del Character
+     * @return TierEnum
+     */
     private TierEnum getTier(CharacterTypeEnum chType, int power) {
         
         TierEnum selectedTier = TierEnum.WEAK;

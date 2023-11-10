@@ -12,7 +12,7 @@ import Enums.TierEnum;
  *
  * @author Masa500
  */
-public class Character {
+public class Character implements Cloneable{
     
     private int id;
     private String name;
@@ -34,6 +34,15 @@ public class Character {
         this.image = pathToImage;
         tierColdown = 0;
     }
+    
+    // Overriding clone() method 
+    // by simply calling Object class 
+    // clone() method. 
+    @Override
+    public Character clone() throws CloneNotSupportedException 
+    { 
+        return (Character) super.clone(); 
+    } 
 
     public int getId() {
         return id;

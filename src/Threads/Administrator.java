@@ -9,6 +9,7 @@ import DB.Buffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Character.Character;
+import Character.CharacterBuilder;
 import GUI.MainFrame;
 import Primitives.Queue;
 import javax.swing.DefaultListModel;
@@ -24,6 +25,7 @@ public class Administrator extends Thread {
     private final MainFrame window;
     private int nextId = 0;
     private final Functions fun = new Functions();
+    private final CharacterBuilder chBuilder = new CharacterBuilder();
     
     public Administrator(MainFrame window, Buffer buffer) {
         this.window = window;
@@ -47,11 +49,18 @@ public class Administrator extends Thread {
                 if (random < 0.8) {
                     int randomCharacter = (int) Math.round(20 * Math.random());
                     
-                    /*TODO: Arreglar esto*/
-                    Character nintendoCharacter = buffer.getNintendoCharacters()[randomCharacter];
-                    Character capcomCharacter = buffer.getCapcomCharacters()[randomCharacter];
-
+                    Character nintendoCharacter = null;
+                    Character capcomCharacter = null;
                     
+                    try{
+                        
+                        nintendoCharacter = buffer.getNintendoCharacters()[randomCharacter].clone();
+                        capcomCharacter = buffer.getCapcomCharacters()[randomCharacter].clone();
+                        
+                        capcomCharacter.setId(chBuilder.getId());
+                        nintendoCharacter.setId(chBuilder.getId());
+                    }
+                    catch(CloneNotSupportedException e){}
                     
                     fun.queueNewCharacter(nintendoCharacter, buffer);
                     fun.queueNewCharacter(capcomCharacter, buffer);
