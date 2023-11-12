@@ -5,8 +5,11 @@
  */
 package DB;
 import Character.Character;
+import Enums.CharacterTypeEnum;
 import Primitives.Queue;
+import java.awt.Image;
 import java.util.concurrent.Semaphore;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Andres
@@ -44,9 +47,64 @@ public class Buffer {
     private Character nintendoFighter;
     private Character capcomFighter;
     
-    
     //Velocidad de simulacion
     private double simSpeed;
+    private double simLoad = 2;
+    private double nextSim = 4;
+    
+    //Imagenes
+    private ImageIcon loadImage = new ImageIcon("/capcomImages/aki.png");
+    
+    public ImageIcon getBorderType(CharacterTypeEnum type){
+    
+        ImageIcon border = null;
+        
+        switch(type){
+            case AIR:
+                border = new ImageIcon("/...");
+                break;
+            case WATER:
+                border = new ImageIcon("/...");
+                break;
+            case EARTH:
+                border = new ImageIcon("/...");
+                break;
+            case FIRE:
+                border = new ImageIcon("/...");
+                break;
+            case LIGHT:
+                border = new ImageIcon("/...");
+                break;
+            case DARKNESS:
+                border = new ImageIcon("/...");
+                break;
+            case THUNDER:
+                border = new ImageIcon("/...");
+                break;
+            case ICE:
+                border = new ImageIcon("/...");
+                break;
+            case STEEL:
+                border = new ImageIcon("/...");
+                break;
+            case MAGMA:
+                border = new ImageIcon("/...");
+                break;
+            case ARMONY:
+                border = new ImageIcon("/...");
+                break;
+            case CHAOS:
+                border = new ImageIcon("/...");
+                break;
+            case NORMAL:
+                border = new ImageIcon("/...");
+                break;
+            default:
+                throw new AssertionError(type.name());
+        }
+        
+        return border;
+    }
     
     /**
      * @return the nintendoCharacters
@@ -271,5 +329,47 @@ public class Buffer {
     public void setSimSpeed(double simSpeed) {
         this.simSpeed = simSpeed;
     }
+
+    /**
+     * @return the simLoad
+     */
+    public double getSimLoad() {
+        return simLoad;
+    }
+
+    /**
+     * @param simLoad the simLoad to set
+     */
+    public void setSimLoad(double simLoad) {
+        this.simLoad = simLoad;
+    }
+
+    /**
+     * @return the nextSim
+     */
+    public double getNextSim() {
+        return nextSim;
+    }
+
+    /**
+     * @param nextSim the nextSim to set
+     */
+    public void setNextSim(double nextSim) {
+        this.nextSim = nextSim;
+    }
     
+
+    /**
+     * @return the loadImage
+     */
+    public ImageIcon getLoadImage() {
+        return loadImage;
+    }
+
+    /**
+     * @param loadImage the loadImage to set
+     */
+    public void setLoadImage(ImageIcon loadImage) {
+        this.loadImage = loadImage;
+    }
 }

@@ -6,6 +6,7 @@
 package GUI;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 
 /**
  *
@@ -63,6 +64,8 @@ public class MainFrame extends javax.swing.JFrame {
         nintendoFighterName = new javax.swing.JLabel();
         capcomFighterName1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        CapcomWinner = new javax.swing.JLabel();
+        NintendoWinner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 600));
@@ -107,6 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
         nintendoFighterScore.setText("0");
         getContentPane().add(nintendoFighterScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 30, 30));
 
+        nintendoFighterPicture.setForeground(new java.awt.Color(255, 255, 255));
         nintendoFighterPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nintendoImages/download (2) (1).jpeg"))); // NOI18N
         nintendoFighterPicture.setPreferredSize(new java.awt.Dimension(100, 80));
         getContentPane().add(nintendoFighterPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 280));
@@ -160,6 +164,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, -1));
+
+        CapcomWinner.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        CapcomWinner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CapcomWinner.setToolTipText("");
+        CapcomWinner.setAutoscrolls(true);
+        getContentPane().add(CapcomWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 180, 40));
+
+        NintendoWinner.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        NintendoWinner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NintendoWinner.setToolTipText("");
+        NintendoWinner.setAutoscrolls(true);
+        getContentPane().add(NintendoWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 180, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,6 +231,8 @@ public class MainFrame extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CapcomWinner;
+    private javax.swing.JLabel NintendoWinner;
     private javax.swing.JLabel capcomFighterFrame;
     private javax.swing.JLabel capcomFighterName1;
     private javax.swing.JLabel capcomFighterPicture;
@@ -251,6 +269,36 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> nintendoQ4;
     // End of variables declaration//GEN-END:variables
 
+    
+
+    /**
+     * @return the CapcomWinner
+     */
+    public javax.swing.JLabel getCapcomWinner() {
+        return CapcomWinner;
+    }
+
+    /**
+     * @return the NintendoWinner
+     */
+    public javax.swing.JLabel getNintendoWinner() {
+        return NintendoWinner;
+    }
+    
+    /**
+     * @return the capcomFighterFrame
+     */
+    public javax.swing.JLabel getCapcomFighterName() {
+        return capcomFighterName1;
+    }
+
+    /**
+     * @return the capcomFighterPicture
+     */
+    public javax.swing.JLabel getNintendoFighterName() {
+        return nintendoFighterName;
+    }
+    
     /**
      * @return the capcomFighterFrame
      */

@@ -22,8 +22,10 @@ import static Enums.CharacterTypeEnum.STEEL;
 import static Enums.CharacterTypeEnum.THUNDER;
 import static Enums.CharacterTypeEnum.WATER;
 import Enums.TierEnum;
+import GUI.MainFrame;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -31,70 +33,110 @@ import java.util.logging.Logger;
  */
 public class AI extends Thread {
 
-    private Buffer buffer;
+    private final Buffer buffer;
+    private final MainFrame window;
 
+    public AI(Buffer buffer, MainFrame window){
+        this.buffer = buffer;
+        this.window = window;
+    }
     
     //TODO: Hacer que se actualice el MainFrame 
     @Override
     public void run() {
         while (true) {
-
             try {
-                buffer.getS2().release();
-                buffer.getS1().acquire();
 
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    buffer.getS2().release();
+                    buffer.getS1().acquire();
 
-            }
-            Character capcom = buffer.getCapcomFighter();
-            Character nintendo = buffer.getNintendoFighter();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
 
-            try {
-                sleep((long) buffer.getSimSpeed());
+                }
+                
+                //Estado de carga
+                window.getNintendoFighterPicture().setIcon(buffer.getLoadImage());
+                window.getCapcomFighterPicture().setIcon(buffer.getLoadImage());
+                
+                window.getCapcomFighterScore().setText("");
+                window.getNintendoFighterScore().setText("");
+                    
+                window.getCapcomFighterName().setText("");
+                window.getNintendoFighterName().setText("");
+                
+                window.getCapcomFighterFrame().setIcon(null);
+                window.getNintendoFighterFrame1().setIcon(null);
+                
+                sleep((long) buffer.getSimLoad());
+                
+                Character capcom = buffer.getCapcomFighter();
+                Character nintendo = buffer.getNintendoFighter();
+                
+                if (capcom != null && nintendo != null) {
+                    
+                    window.getCapcomFighterFrame().setIcon(buffer.getBorderType(capcom.getCharacterType()));
+                    window.getNintendoFighterFrame1().setIcon(buffer.getBorderType(nintendo.getCharacterType()));
+                
+                    window.getCapcomFighterScore().setText(capcom.getPower()+"");
+                    window.getNintendoFighterScore().setText(nintendo.getPower()+"");
+                    
+                    window.getCapcomFighterName().setText(capcom.getName());
+                    window.getNintendoFighterName().setText(nintendo.getName());
+                    
+                    window.getNintendoFighterPicture().setIcon(new ImageIcon(nintendo.getImage()));
+                    window.getCapcomFighterPicture().setIcon(new ImageIcon(capcom.getImage()));
+
+                    //Estado de batalla
+                    sleep((long) buffer.getSimSpeed());
+
+                    int randNum = (int) Math.random() * 100;
+
+                    if (randNum < 40) {
+
+                        int capcomBuffs = getBuffBonus(capcom.getCharacterType(), nintendo.getCharacterType());
+                        capcom.setPower(capcomBuffs + capcom.getPower());
+
+                        int nintendoBuffs = getBuffBonus(nintendo.getCharacterType(), capcom.getCharacterType());
+                        nintendo.setPower(nintendoBuffs + nintendo.getPower());
+
+                        if (nintendo.getPower() > capcom.getPower()) {
+                            buffer.getCapcomWinningQueue().queue(nintendo);
+                            window.getCapcomWinner().setText("LOSER");
+                            window.getNintendoWinner().setText("WINNER");
+                        } else {
+                            buffer.getCapcomWinningQueue().queue(capcom);
+                            window.getCapcomWinner().setText("WINNER");
+                            window.getNintendoWinner().setText("LOSER");
+                        }
+                    } else if (randNum < 67) {
+
+                        getToTierQueue(capcom);
+                        getToTierQueue(nintendo);
+                        
+                        window.getCapcomWinner().setText("TIE");
+                        window.getNintendoWinner().setText("TIE");
+                    } else {
+
+                        capcom.setTier(TierEnum.FIX);
+                        getToTierQueue(capcom);
+                        nintendo.setTier(TierEnum.FIX);
+                        getToTierQueue(nintendo);
+                        
+                        window.getCapcomWinner().setText("FIX");
+                        window.getNintendoWinner().setText("FIX");
+                    }
+                } 
+                
+                window.getCapcomFighterScore().setText(capcom.getPower()+"");
+                window.getNintendoFighterScore().setText(nintendo.getPower()+"");
+                
+                 //Estado de Siguiente batalla o culminacion de una
+                sleep((long) buffer.getNextSim());
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            int randNum = (int) Math.random() * 100;
-            if (capcom != null && nintendo != null) {
-
-                if (randNum < 40) {
-
-                    int capcomBuffs = getBuffBonus(capcom.getCharacterType(), nintendo.getCharacterType());
-                    capcom.setPower(capcomBuffs + capcom.getPower());
-
-                    int nintendoBuffs = getBuffBonus(nintendo.getCharacterType(), capcom.getCharacterType());
-                    nintendo.setPower(nintendoBuffs + nintendo.getPower());
-
-                    if (nintendo.getPower() > capcom.getPower()) {
-                        buffer.getCapcomWinningQueue().queue(nintendo);
-                    } else {
-                        buffer.getCapcomWinningQueue().queue(capcom);
-                    }
-                } else if (randNum < 67) {
-
-                    getToTierQueue(capcom);
-                    getToTierQueue(nintendo);
-                } else {
-
-                    capcom.setTier(TierEnum.FIX);
-                    getToTierQueue(capcom);
-                    nintendo.setTier(TierEnum.FIX);
-                    getToTierQueue(nintendo);
-                }
-            } else if (randNum < 67) {
-
-                capcom.setTier(TierEnum.STRONG);
-                getToTierQueue(capcom);
-                nintendo.setTier(TierEnum.STRONG);
-                getToTierQueue(nintendo);
-            } else {
-
-                capcom.setTier(TierEnum.FIX);
-                getToTierQueue(capcom);
-                nintendo.setTier(TierEnum.FIX);
-                getToTierQueue(nintendo);
             }
         }
     }
