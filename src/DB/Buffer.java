@@ -61,43 +61,43 @@ public class Buffer {
         
         switch(type){
             case AIR:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/...");
                 break;
             case WATER:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/...");
                 break;
             case EARTH:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/...");
                 break;
             case FIRE:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/...");
                 break;
             case LIGHT:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/...");
                 break;
             case DARKNESS:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/...");
                 break;
             case THUNDER:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/Thunder.png");
                 break;
             case ICE:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/Ice.png");
                 break;
             case STEEL:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/Steel.png");
                 break;
             case MAGMA:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/Lava.png");
                 break;
             case ARMONY:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/Armony.png");
                 break;
             case CHAOS:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/Chaos.png");
                 break;
             case NORMAL:
-                border = new ImageIcon("/...");
+                border = new ImageIcon("/Images/");
                 break;
             default:
                 throw new AssertionError(type.name());

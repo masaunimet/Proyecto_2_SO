@@ -69,6 +69,8 @@ public class AI extends Thread {
                 window.getCapcomFighterFrame().setIcon(null);
                 window.getNintendoFighterFrame1().setIcon(null);
                 
+                window.repaint();
+                
                 sleep((long) buffer.getSimLoad());
                 
                 Character capcom = buffer.getCapcomFighter();
@@ -87,6 +89,8 @@ public class AI extends Thread {
                     
                     window.getNintendoFighterPicture().setIcon(new ImageIcon(nintendo.getImage()));
                     window.getCapcomFighterPicture().setIcon(new ImageIcon(capcom.getImage()));
+                    
+                    window.repaint();
 
                     //Estado de batalla
                     sleep((long) buffer.getSimSpeed());
@@ -131,6 +135,8 @@ public class AI extends Thread {
                 
                 window.getCapcomFighterScore().setText(capcom.getPower()+"");
                 window.getNintendoFighterScore().setText(nintendo.getPower()+"");
+                
+                window.repaint();
                 
                  //Estado de Siguiente batalla o culminacion de una
                 sleep((long) buffer.getNextSim());
