@@ -19,7 +19,7 @@ public class Functions {
 
     public static void createCharacters(Buffer buffer) {
         CharacterBuilder cb = new CharacterBuilder();
-        buffer.getNintendoCharacters()[0] = cb.CreateCharacter(TierEnum.STRONG, "Link", CompanyEnum.NINTENDO, "src\\characterImages\\blackDragon.jpg");
+        buffer.getNintendoCharacters()[0] = cb.CreateCharacter(TierEnum.STRONG, "Black Dragon", CompanyEnum.NINTENDO, "src\\characterImages\\blackDragon.jpg");
         buffer.getNintendoCharacters()[1] = cb.CreateCharacter(TierEnum.WEAK, "Bokoblin", CompanyEnum.NINTENDO, "src\\characterImages\\bokoblin.jpg");
         buffer.getNintendoCharacters()[2] = cb.CreateCharacter(TierEnum.NORMAL, "Bokoblin Army", CompanyEnum.NINTENDO, "src\\characterImages\\bokoblinArmy.jpg");
         buffer.getNintendoCharacters()[3] = cb.CreateCharacter(TierEnum.STRONG, "Demon King", CompanyEnum.NINTENDO, "src\\characterImages\\demonKing.jpg");
