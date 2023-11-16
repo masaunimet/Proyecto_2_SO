@@ -46,7 +46,7 @@ public class Queue {
      */
     public void queue(Character character) {
         Node pNew = new Node(character);
-        if (isEmpty()) {
+        if (!isEmpty()) {
             tail.setpNext(pNew);
             tail = pNew;
         } else {
@@ -55,7 +55,18 @@ public class Queue {
         }
         size++;
     }
-    
+
+    public void queueNode(Node pNew) {
+        if (!isEmpty()) {
+            tail.setpNext(pNew);
+            tail = pNew;
+        } else {
+            head = pNew;
+            tail = pNew;
+        }
+        size++;
+    }
+
     /**
      * Recibiendo un personaje, lo encola un personaje nuevo
      *
@@ -84,6 +95,7 @@ public class Queue {
         if (!isEmpty()) {
             head = head.getpNext();
             size--;
+            character.setpNext(null);
         }
         return character;
     }
@@ -102,10 +114,13 @@ public class Queue {
             Node pAux = dequeue();
             if (pAux.getTurnsQueued() == 8) {
                 pAux.setTurnsQueued(0);
-                qAux.queue(pAux.getData());
+                qAux.queueNode(pAux);
+                System.out.println("Cola: " + pAux.getData().getName() + " " + pAux.getTurnsQueued());
             } else {
-                pAux.setTurnsQueued(pAux.getTurnsQueued() + 1);
-                queue(pAux.getData());
+                int turns = pAux.getTurnsQueued();
+                turns++;
+                pAux.setTurnsQueued(turns);
+                queueNode(pAux);
             }
         }
 
@@ -120,8 +135,10 @@ public class Queue {
     public void queueAQueueInQueue(Queue q) {
         int originalQSize = q.getSize();
         for (int i = 0; i < originalQSize; i++) {
+            System.out.println("Llega aqui?");
             Character cAux = q.dequeue().getData();
             queue(cAux);
+            System.out.print(cAux.getName() + "->");
         }
 
     }
@@ -133,12 +150,13 @@ public class Queue {
      */
     public String[] queueToArray() {
         int originalSize = size;
+        System.out.println(size);
         String[] output = new String[size];
 
         for (int i = 0; i < originalSize; i++) {
             Node pAux = dequeue();
             output[i] = String.valueOf(pAux.getData().getId()) + ": " + pAux.getData().getName();
-            queue(pAux.getData());
+            queueNode(pAux);
         }
         return output;
     }

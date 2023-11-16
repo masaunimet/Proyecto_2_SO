@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import DB.Buffer;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 
@@ -14,10 +15,12 @@ import javax.swing.JLabel;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    public Buffer buffer;
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainFrame(Buffer buffer) {
+        this.buffer = buffer;
         initComponents();
     }
 
@@ -30,7 +33,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSlider1 = new javax.swing.JSlider();
         jScrollPane2 = new javax.swing.JScrollPane();
         nintendoQ4 = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -63,16 +65,19 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         nintendoFighterName = new javax.swing.JLabel();
         capcomFighterName1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        simSpeedComboBox = new javax.swing.JComboBox<>();
         CapcomWinner = new javax.swing.JLabel();
         NintendoWinner = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        nintendoScore = new javax.swing.JLabel();
+        capcomScore = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 580, -1, -1));
 
         jScrollPane2.setViewportView(nintendoQ4);
 
@@ -159,11 +164,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         nintendoFighterName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         nintendoFighterName.setToolTipText("");
-        getContentPane().add(nintendoFighterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 190, 50));
-        getContentPane().add(capcomFighterName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, 190, 50));
+        getContentPane().add(nintendoFighterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 190, 50));
+        getContentPane().add(capcomFighterName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 190, 50));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, -1));
+        simSpeedComboBox.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        simSpeedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.25", "0.5", "0.75", "1", "2", "5", "10", "20" }));
+        simSpeedComboBox.setSelectedIndex(3);
+        simSpeedComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simSpeedComboBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(simSpeedComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 90, 40));
 
         CapcomWinner.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         CapcomWinner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -177,43 +189,35 @@ public class MainFrame extends javax.swing.JFrame {
         NintendoWinner.setAutoscrolls(true);
         getContentPane().add(NintendoWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 180, 40));
 
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel9.setText("Velocidad de reproducción:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 250, 40));
+
+        nintendoScore.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        nintendoScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nintendoScore.setText("0");
+        getContentPane().add(nintendoScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 80, 50));
+
+        capcomScore.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        capcomScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        capcomScore.setText("0");
+        getContentPane().add(capcomScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 80, 50));
+
+        jLabel10.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("-");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 40, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void simSpeedComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simSpeedComboBoxActionPerformed
+        double newSimSpeed = Double.parseDouble(this.simSpeedComboBox.getSelectedItem().toString());
+        this.buffer.setSimSpeed(10000/newSimSpeed);
+        this.buffer.setNextSim(10000/newSimSpeed);
+        this.buffer.setSimLoad(10000/newSimSpeed);
+    }//GEN-LAST:event_simSpeedComboBoxActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
 
     public void clearLists() {
         DefaultListModel modelo = new DefaultListModel();
@@ -241,8 +245,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> capcomQ2;
     private javax.swing.JList<String> capcomQ3;
     private javax.swing.JList<String> capcomQ4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel capcomScore;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -250,6 +255,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -258,7 +264,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel nintendoFighterFrame1;
     private javax.swing.JLabel nintendoFighterName;
     private javax.swing.JLabel nintendoFighterPicture;
@@ -267,6 +272,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> nintendoQ2;
     private javax.swing.JList<String> nintendoQ3;
     private javax.swing.JList<String> nintendoQ4;
+    private javax.swing.JLabel nintendoScore;
+    private javax.swing.JComboBox<String> simSpeedComboBox;
     // End of variables declaration//GEN-END:variables
 
     
@@ -395,5 +402,19 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public javax.swing.JList<String> getNintendoQ4() {
         return nintendoQ4;
+    }
+
+    /**
+     * @return the capcomScore
+     */
+    public javax.swing.JLabel getCapcomScore() {
+        return capcomScore;
+    }
+
+    /**
+     * @return the nintendoScore
+     */
+    public javax.swing.JLabel getNintendoScore() {
+        return nintendoScore;
     }
 }

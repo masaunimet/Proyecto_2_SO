@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import Character.Character;
 import Character.CharacterBuilder;
 import GUI.MainFrame;
+import Primitives.Node;
 import Primitives.Queue;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -26,7 +27,7 @@ public class Administrator extends Thread {
     private int nextId = 0;
     private final Functions fun = new Functions();
     private final CharacterBuilder chBuilder = new CharacterBuilder();
-    
+
     public Administrator(MainFrame window, Buffer buffer) {
         this.window = window;
         this.buffer = buffer;
@@ -43,28 +44,14 @@ public class Administrator extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
             }
+
             if (buffer.getNumberOfCycles() == 2) {
 
                 double random = Math.random();
                 if (random < 0.8) {
-                    int randomCharacter = (int) Math.round(20 * Math.random());
-                    
-                    Character nintendoCharacter = null;
-                    Character capcomCharacter = null;
-                    
-                    try{
-                        
-                        nintendoCharacter = buffer.getNintendoCharacters()[randomCharacter].clone();
-                        capcomCharacter = buffer.getCapcomCharacters()[randomCharacter].clone();
-                        
-                        capcomCharacter.setId(chBuilder.getId());
-                        nintendoCharacter.setId(chBuilder.getId());
-                    }
-                    catch(CloneNotSupportedException e){}
-                    
-                    fun.queueNewCharacter(nintendoCharacter, buffer);
-                    fun.queueNewCharacter(capcomCharacter, buffer);
+                    createCapcomAndNintendoCharacters();
                 }
+                buffer.setNumberOfCycles(0);
 
             }
 
@@ -86,7 +73,9 @@ public class Administrator extends Thread {
 
             //Capcom Fighter
             if (!buffer.getCapcomQueue1().isEmpty()) {
+                System.out.println(buffer.getCapcomQueue1().isEmpty());
                 CapcomFighter = buffer.getCapcomQueue1().dequeue().getData();
+                System.out.println("");
             } else if (!buffer.getCapcomQueue2().isEmpty()) {
                 CapcomFighter = buffer.getCapcomQueue2().dequeue().getData();
             } else if (!buffer.getCapcomQueue3().isEmpty()) {
@@ -107,11 +96,13 @@ public class Administrator extends Thread {
 
             if ((random < 0.40)) {
                 if (!buffer.getCapcomQueue4().isEmpty()) {
-                    buffer.getCapcomQueue1().queue(buffer.getCapcomQueue4().dequeue().getData());
+                    Node pNew1 = buffer.getCapcomQueue4().dequeue();
+                    buffer.getCapcomQueue1().queue(pNew1.getData());
                 }
 
                 if (!buffer.getNintendoQueue4().isEmpty()) {
-                    buffer.getNintendoQueue1().queue(buffer.getNintendoQueue4().dequeue().getData());
+                    Node pNew2 = buffer.getNintendoQueue4().dequeue();
+                    buffer.getNintendoQueue1().queue(pNew2.getData());
                 }
             }
 
@@ -127,7 +118,7 @@ public class Administrator extends Thread {
             updateQueues(window.getNintendoQ4(), buffer.getNintendoQueue4());
 
             //Pone en el buffer al peleador que le toca para que el AI lo tome
-            buffer.setCapcomFighter(NintendoFighter);
+            buffer.setNintendoFighter(NintendoFighter);
             buffer.setCapcomFighter(CapcomFighter);
 
             buffer.setNumberOfCycles(buffer.getNumberOfCycles() + 1);
@@ -143,13 +134,34 @@ public class Administrator extends Thread {
      * @param list JList - Módulo de lista de Netbeans para el JFrame
      * @param queue Queue - Cola de personajes
      */
-    public void updateQueues(JList<String> list, Queue queue) {
+    public void updateQueues(javax.swing.JList<String> list, Queue queue) {
+        DefaultListModel modelo = new DefaultListModel();
+        list.setModel(modelo);
         String[] queueElements = queue.queueToArray();
-        DefaultListModel model = (DefaultListModel) list.getModel();
         for (String queueElement : queueElements) {
-            model.addElement(queueElement);
+            modelo.addElement(queueElement);
         }
 
+    }
+
+    public void createCapcomAndNintendoCharacters() {
+        int randomCharacter = (int) Math.round(19 * Math.random());
+
+        Character nintendoCharacter = null;
+        Character capcomCharacter = null;
+
+        try {
+
+            nintendoCharacter = buffer.getNintendoCharacters()[randomCharacter].clone();
+            capcomCharacter = buffer.getCapcomCharacters()[randomCharacter].clone();
+
+            capcomCharacter.setId(chBuilder.getId());
+            nintendoCharacter.setId(chBuilder.getId());
+        } catch (CloneNotSupportedException e) {
+        }
+
+        fun.queueNewCharacter(nintendoCharacter, buffer);
+        fun.queueNewCharacter(capcomCharacter, buffer);
     }
 
     /**

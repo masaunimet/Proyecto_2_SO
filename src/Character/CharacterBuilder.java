@@ -5,6 +5,7 @@
 package Character;
 
 import Enums.CharacterTypeEnum;
+import Enums.CompanyEnum;
 import Enums.TierEnum;
 import Threads.Administrator;
 import java.util.concurrent.Semaphore;
@@ -31,9 +32,9 @@ public class CharacterBuilder {
     
         Character ch = new Character();
         // poder Base random
-        int power = (int) Math.random() * 9;
+        int power = (int) (Math.random() * 9);
         
-        int randNum = (int) Math.random() * 100;
+        int randNum = (int) (Math.random() * 100);
         
         CharacterTypeEnum chType;
         
@@ -61,11 +62,14 @@ public class CharacterBuilder {
     /**
      * Crea un Character basado en el Tier
      * @param tier CharacterTypeEnum - Tier al cual estara el personaje
+     * @param name
+     * @param companyType
+     * @param pathToImage
      * @return Character
      */
-    public Character CreateCharacter(TierEnum tier){
+    public Character CreateCharacter(TierEnum tier, String name, CompanyEnum companyType, String pathToImage){
     
-        Character ch = new Character();
+        Character ch = new Character(name, companyType,pathToImage);
         boolean isSpecial = false;
         int power = 0;
         CharacterTypeEnum chType = CharacterTypeEnum.NORMAL;
@@ -73,27 +77,27 @@ public class CharacterBuilder {
         switch(tier){
             case WEAK:
                 //Si es debil el poder sera de 0-4 y tipo normal
-                power = (int) Math.random() * 4;
+                power = (int) (Math.random() * 4);
                 break;
             case NORMAL:
                 //Indica 2 tipos de posibilidades para Character 
                 boolean normal = Math.random() > CharacterTypeEnum.getNormalPercentage();
                 //Si el character es del tipo normal
                 if(normal){
-                    power = (int) Math.random() * 9;
+                    power = (int) (Math.random() * 9);
                     break;
                 }
                 //Si el Character tiene un tipo distinto a Normal
-                power = (int) Math.random() * 4;
-                chType = CharacterTypeEnum.byId((int) Math.random()*CharacterTypeEnum.getSpecialLimit());
+                power = (int) (Math.random() * 4);
+                chType = CharacterTypeEnum.byId((int) (Math.random() * CharacterTypeEnum.getSpecialLimit()));
                 isSpecial = Math.random() > CharacterTypeEnum.getEvolPercentage();
                 if(isSpecial)
                     chType = CharacterTypeEnum.byId(chType.getId()+ (1+CharacterTypeEnum.getSpecialLimit()));
                 break;
             case STRONG:
                 //Si es fuerte tiene un tipo distinto a Normal y su poder va de 0 -9
-                power = (int) Math.random() * 9;
-                chType = CharacterTypeEnum.byId((int) Math.random()*CharacterTypeEnum.getSpecialLimit());
+                power = (int) (Math.random() * 9);
+                chType = CharacterTypeEnum.byId((int) (Math.random() * CharacterTypeEnum.getSpecialLimit()));
                 isSpecial = Math.random() > CharacterTypeEnum.getEvolPercentage();
                 if(isSpecial)
                     chType = CharacterTypeEnum.byId(chType.getId()+ (1+CharacterTypeEnum.getSpecialLimit()));
