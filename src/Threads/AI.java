@@ -68,7 +68,9 @@ public class AI extends Thread {
 
                 window.getCapcomFighterFrame().setIcon(null);
                 window.getNintendoFighterFrame1().setIcon(null);
-
+                
+                window.repaint();
+                
                 sleep((long) buffer.getSimLoad());
 
                 Character capcom = buffer.getCapcomFighter();
