@@ -63,43 +63,43 @@ public class Buffer {
 
         switch (type) {
             case AIR:
-                border = new ImageIcon("/Images/...");
+                border = new ImageIcon("src\\Images\\Air.png");
                 break;
             case WATER:
-                border = new ImageIcon("/Images/...");
+                border = new ImageIcon("src\\Images\\Water.png");
                 break;
             case EARTH:
-                border = new ImageIcon("/Images/...");
+                border = new ImageIcon("src\\Images\\Earth.png");
                 break;
             case FIRE:
-                border = new ImageIcon("/Images/...");
+                border = new ImageIcon("src\\Images\\Fire.png");
                 break;
             case LIGHT:
-                border = new ImageIcon("/Images/...");
+                border = new ImageIcon("src\\Images\\Light.png");
                 break;
             case DARKNESS:
-                border = new ImageIcon("/Images/...");
+                border = new ImageIcon("src\\Images\\Dark.png");
                 break;
             case THUNDER:
-                border = new ImageIcon("/Images/Thunder.png");
+                border = new ImageIcon("src\\Images\\Thunder.png");
                 break;
             case ICE:
-                border = new ImageIcon("/Images/Ice.png");
+                border = new ImageIcon("src\\Images\\Ice.png");
                 break;
             case STEEL:
-                border = new ImageIcon("/Images/Steel.png");
+                border = new ImageIcon("src\\Images\\Steel.png");
                 break;
             case MAGMA:
-                border = new ImageIcon("/Images/Lava.png");
+                border = new ImageIcon("src\\Images\\Lava.png");
                 break;
             case ARMONY:
-                border = new ImageIcon("/Images/Armony.png");
+                border = new ImageIcon("src\\Images\\Armony.png");
                 break;
             case CHAOS:
-                border = new ImageIcon("/Images/Chaos.png");
+                border = new ImageIcon("src\\Images\\Chaos.png");
                 break;
             case NORMAL:
-                border = new ImageIcon("/Images/");
+                border = new ImageIcon("src\\Images\\Normal.png");
                 break;
             default:
                 throw new AssertionError(type.name());
