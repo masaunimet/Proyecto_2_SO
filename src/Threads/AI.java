@@ -68,9 +68,10 @@ public class AI extends Thread {
 
                 window.getCapcomFighterFrame().setIcon(null);
                 window.getNintendoFighterFrame1().setIcon(null);
-                
+
                 window.repaint();
-                
+                window.getCapcomWinner().setText("SELECTING");
+                window.getNintendoWinner().setText("SELECTING");
                 sleep((long) buffer.getSimLoad());
 
                 Character capcom = buffer.getCapcomFighter();
@@ -97,6 +98,8 @@ public class AI extends Thread {
                     window.getCapcomFighterPicture().setIcon(iconCapcom);
 
                     //Estado de batalla
+                    window.getCapcomWinner().setText("DECIDING");
+                    window.getNintendoWinner().setText("DECIDING");
                     sleep((long) buffer.getSimSpeed());
 
                     int randNum = (int) (Math.random() * 100);

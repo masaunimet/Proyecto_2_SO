@@ -40,26 +40,26 @@ public class Functions {
         buffer.getNintendoCharacters()[18] = cb.CreateCharacter(TierEnum.NORMAL, "Yunobo", CompanyEnum.NINTENDO, "src\\characterImages\\yunobo.jpg");
         buffer.getNintendoCharacters()[19] = cb.CreateCharacter(TierEnum.NORMAL, "Zelda", CompanyEnum.NINTENDO, "src\\characterImages\\zelda.jpg");
         
-        buffer.getCapcomCharacters()[0] = cb.CreateCharacter(TierEnum.STRONG, "Aki", CompanyEnum.CAPCOM, "src\\capcomImages\\aki.png");
-        buffer.getCapcomCharacters()[1] = cb.CreateCharacter(TierEnum.WEAK, "Blanka", CompanyEnum.CAPCOM, "src\\capcomImages\\blanka.png");
-        buffer.getCapcomCharacters()[2] = cb.CreateCharacter(TierEnum.STRONG, "Cammy", CompanyEnum.CAPCOM, "src\\capcomImages\\cammy.png");
-        buffer.getCapcomCharacters()[3] = cb.CreateCharacter(TierEnum.STRONG, "Chunli", CompanyEnum.CAPCOM, "src\\capcomImages\\chunli.png");
-        buffer.getCapcomCharacters()[4] = cb.CreateCharacter(TierEnum.STRONG, "Deejay", CompanyEnum.CAPCOM, "src\\capcomImages\\deejay.png");
-        buffer.getCapcomCharacters()[5] = cb.CreateCharacter(TierEnum.STRONG, "Dhalsim", CompanyEnum.CAPCOM, "src\\capcomImages\\dhalsim.png");
-        buffer.getCapcomCharacters()[6] = cb.CreateCharacter(TierEnum.WEAK, "Ehonda", CompanyEnum.CAPCOM, "src\\capcomImages\\ehonda.png");
-        buffer.getCapcomCharacters()[7] = cb.CreateCharacter(TierEnum.NORMAL, "Guile", CompanyEnum.CAPCOM, "src\\capcomImages\\guile.png");
-        buffer.getCapcomCharacters()[8] = cb.CreateCharacter(TierEnum.STRONG, "Jamie", CompanyEnum.CAPCOM, "src\\capcomImages\\jamie.png");
-        buffer.getCapcomCharacters()[9] = cb.CreateCharacter(TierEnum.STRONG, "JP", CompanyEnum.CAPCOM, "src\\capcomImages\\jp.png");
-        buffer.getCapcomCharacters()[10] = cb.CreateCharacter(TierEnum.NORMAL, "Juri", CompanyEnum.CAPCOM, "src\\capcomImages\\juri.png");
-        buffer.getCapcomCharacters()[11] = cb.CreateCharacter(TierEnum.NORMAL, "Ken", CompanyEnum.CAPCOM, "src\\capcomImages\\ken.png");
-        buffer.getCapcomCharacters()[12] = cb.CreateCharacter(TierEnum.STRONG, "Kimberly", CompanyEnum.CAPCOM, "src\\capcomImages\\kimberly.png");
-        buffer.getCapcomCharacters()[13] = cb.CreateCharacter(TierEnum.NORMAL, "Lily", CompanyEnum.CAPCOM, "src\\capcomImages\\lily.png");
-        buffer.getCapcomCharacters()[14] = cb.CreateCharacter(TierEnum.NORMAL, "Luke", CompanyEnum.CAPCOM, "src\\capcomImages\\luke.png");
-        buffer.getCapcomCharacters()[15] = cb.CreateCharacter(TierEnum.NORMAL, "Manon", CompanyEnum.CAPCOM, "src\\capcomImages\\manon.png");
-        buffer.getCapcomCharacters()[16] = cb.CreateCharacter(TierEnum.NORMAL, "Marisa", CompanyEnum.CAPCOM, "src\\capcomImages\\marisa.png");
-        buffer.getCapcomCharacters()[17] = cb.CreateCharacter(TierEnum.NORMAL, "Rashid", CompanyEnum.CAPCOM, "src\\capcomImages\\rashid.png");
-        buffer.getCapcomCharacters()[18] = cb.CreateCharacter(TierEnum.NORMAL, "Ryu", CompanyEnum.CAPCOM, "src\\capcomImages\\ryu.png");
-        buffer.getCapcomCharacters()[19] = cb.CreateCharacter(TierEnum.NORMAL, "Zangief", CompanyEnum.CAPCOM, "src\\capcomImages\\zangief.png");
+        buffer.getCapcomCharacters()[0] = cb.CreateCharacter(TierEnum.STRONG, "Aki", CompanyEnum.CAPCOM, "src\\capcomImages\\aki.jpg");
+        buffer.getCapcomCharacters()[1] = cb.CreateCharacter(TierEnum.WEAK, "Blanka", CompanyEnum.CAPCOM, "src\\capcomImages\\blanka.jpg");
+        buffer.getCapcomCharacters()[2] = cb.CreateCharacter(TierEnum.STRONG, "Cammy", CompanyEnum.CAPCOM, "src\\capcomImages\\cammy.jpg");
+        buffer.getCapcomCharacters()[3] = cb.CreateCharacter(TierEnum.STRONG, "Chunli", CompanyEnum.CAPCOM, "src\\capcomImages\\chunli.jpg");
+        buffer.getCapcomCharacters()[4] = cb.CreateCharacter(TierEnum.STRONG, "Deejay", CompanyEnum.CAPCOM, "src\\capcomImages\\deejay.jpg");
+        buffer.getCapcomCharacters()[5] = cb.CreateCharacter(TierEnum.STRONG, "Dhalsim", CompanyEnum.CAPCOM, "src\\capcomImages\\dhalsim.jpg");
+        buffer.getCapcomCharacters()[6] = cb.CreateCharacter(TierEnum.WEAK, "Ehonda", CompanyEnum.CAPCOM, "src\\capcomImages\\ehonda.jpg");
+        buffer.getCapcomCharacters()[7] = cb.CreateCharacter(TierEnum.NORMAL, "Guile", CompanyEnum.CAPCOM, "src\\capcomImages\\guile.jpg");
+        buffer.getCapcomCharacters()[8] = cb.CreateCharacter(TierEnum.STRONG, "Jamie", CompanyEnum.CAPCOM, "src\\capcomImages\\jamie.jpg");
+        buffer.getCapcomCharacters()[9] = cb.CreateCharacter(TierEnum.STRONG, "JP", CompanyEnum.CAPCOM, "src\\capcomImages\\jp.jpg");
+        buffer.getCapcomCharacters()[10] = cb.CreateCharacter(TierEnum.NORMAL, "Juri", CompanyEnum.CAPCOM, "src\\capcomImages\\juri.jpg");
+        buffer.getCapcomCharacters()[11] = cb.CreateCharacter(TierEnum.NORMAL, "Ken", CompanyEnum.CAPCOM, "src\\capcomImages\\ken.jpg");
+        buffer.getCapcomCharacters()[12] = cb.CreateCharacter(TierEnum.STRONG, "Kimberly", CompanyEnum.CAPCOM, "src\\capcomImages\\kimberly.jpg");
+        buffer.getCapcomCharacters()[13] = cb.CreateCharacter(TierEnum.NORMAL, "Lily", CompanyEnum.CAPCOM, "src\\capcomImages\\lily.jpg");
+        buffer.getCapcomCharacters()[14] = cb.CreateCharacter(TierEnum.NORMAL, "Luke", CompanyEnum.CAPCOM, "src\\capcomImages\\luke.jpg");
+        buffer.getCapcomCharacters()[15] = cb.CreateCharacter(TierEnum.NORMAL, "Manon", CompanyEnum.CAPCOM, "src\\capcomImages\\manon.jpg");
+        buffer.getCapcomCharacters()[16] = cb.CreateCharacter(TierEnum.NORMAL, "Marisa", CompanyEnum.CAPCOM, "src\\capcomImages\\marisa.jpg");
+        buffer.getCapcomCharacters()[17] = cb.CreateCharacter(TierEnum.NORMAL, "Rashid", CompanyEnum.CAPCOM, "src\\capcomImages\\rashid.jpg");
+        buffer.getCapcomCharacters()[18] = cb.CreateCharacter(TierEnum.NORMAL, "Ryu", CompanyEnum.CAPCOM, "src\\capcomImages\\ryu.jpg");
+        buffer.getCapcomCharacters()[19] = cb.CreateCharacter(TierEnum.NORMAL, "Zangief", CompanyEnum.CAPCOM, "src\\capcomImages\\zangief.jpg");
     }
 
 }

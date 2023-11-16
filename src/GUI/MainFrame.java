@@ -80,95 +80,128 @@ public class MainFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
+
         jScrollPane2.setViewportView(nintendoQ4);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 150, 90));
+
+        jScrollPane3.setForeground(new java.awt.Color(0, 0, 0));
 
         jScrollPane3.setViewportView(nintendoQ1);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 150, 90));
 
+        jScrollPane4.setForeground(new java.awt.Color(0, 0, 0));
+
         jScrollPane4.setViewportView(nintendoQ2);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 150, 90));
+
+        jScrollPane5.setForeground(new java.awt.Color(0, 0, 0));
 
         jScrollPane5.setViewportView(nintendoQ3);
 
         getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 150, 90));
 
+        jScrollPane6.setForeground(new java.awt.Color(0, 0, 0));
+
         jScrollPane6.setViewportView(capcomQ4);
 
         getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, 150, 90));
+
+        jScrollPane7.setForeground(new java.awt.Color(0, 0, 0));
 
         jScrollPane7.setViewportView(capcomQ1);
 
         getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 150, 90));
 
+        jScrollPane8.setForeground(new java.awt.Color(0, 0, 0));
+
         jScrollPane8.setViewportView(capcomQ2);
 
         getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 150, 90));
+
+        jScrollPane9.setForeground(new java.awt.Color(0, 0, 0));
 
         jScrollPane9.setViewportView(capcomQ3);
 
         getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, 150, 90));
 
         nintendoFighterScore.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        nintendoFighterScore.setForeground(new java.awt.Color(255, 255, 255));
         nintendoFighterScore.setText("0");
-        getContentPane().add(nintendoFighterScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 30, 30));
+        getContentPane().add(nintendoFighterScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 30, 30));
 
         nintendoFighterPicture.setForeground(new java.awt.Color(255, 255, 255));
         nintendoFighterPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nintendoImages/download (2) (1).jpeg"))); // NOI18N
         nintendoFighterPicture.setPreferredSize(new java.awt.Dimension(100, 80));
         getContentPane().add(nintendoFighterPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 280));
-        getContentPane().add(nintendoFighterFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 240, 340));
+        getContentPane().add(nintendoFighterFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 240, 340));
 
         capcomFighterScore.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        capcomFighterScore.setForeground(new java.awt.Color(255, 255, 255));
         capcomFighterScore.setText("0");
-        getContentPane().add(capcomFighterScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 30, 30));
+        getContentPane().add(capcomFighterScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 30, 30));
 
         capcomFighterPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nintendoImages/download (2) (1).jpeg"))); // NOI18N
         capcomFighterPicture.setPreferredSize(new java.awt.Dimension(100, 80));
         getContentPane().add(capcomFighterPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 180, 280));
-        getContentPane().add(capcomFighterFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 240, 340));
+        getContentPane().add(capcomFighterFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 240, 340));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Cola Refuerzos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cola Prioridad 1");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cola Prioridad 1");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Cola Prioridad 2");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cola Prioridad 2");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cola Prioridad 3");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Cola Prioridad 3");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Cola Refuerzos");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 460, -1, -1));
 
-        nintendoFighterName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        nintendoFighterName.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        nintendoFighterName.setForeground(new java.awt.Color(0, 0, 0));
+        nintendoFighterName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nintendoFighterName.setToolTipText("");
         getContentPane().add(nintendoFighterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 190, 50));
+
+        capcomFighterName1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        capcomFighterName1.setForeground(new java.awt.Color(0, 0, 0));
+        capcomFighterName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(capcomFighterName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 190, 50));
 
         simSpeedComboBox.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        simSpeedComboBox.setForeground(new java.awt.Color(0, 0, 0));
         simSpeedComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0.25", "0.5", "0.75", "1", "2", "5", "10", "20" }));
         simSpeedComboBox.setSelectedIndex(3);
         simSpeedComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -179,32 +212,38 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(simSpeedComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 90, 40));
 
         CapcomWinner.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        CapcomWinner.setForeground(new java.awt.Color(0, 0, 0));
         CapcomWinner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CapcomWinner.setToolTipText("");
         CapcomWinner.setAutoscrolls(true);
         getContentPane().add(CapcomWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 180, 40));
 
         NintendoWinner.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        NintendoWinner.setForeground(new java.awt.Color(0, 0, 0));
         NintendoWinner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NintendoWinner.setToolTipText("");
         NintendoWinner.setAutoscrolls(true);
         getContentPane().add(NintendoWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 180, 40));
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Velocidad de reproducción:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 250, 40));
 
         nintendoScore.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        nintendoScore.setForeground(new java.awt.Color(0, 0, 0));
         nintendoScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nintendoScore.setText("0");
         getContentPane().add(nintendoScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 80, 50));
 
         capcomScore.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        capcomScore.setForeground(new java.awt.Color(0, 0, 0));
         capcomScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         capcomScore.setText("0");
         getContentPane().add(capcomScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 80, 50));
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("-");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 40, 30));
