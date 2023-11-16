@@ -55,7 +55,7 @@ public class Buffer {
     private double nextSim = 4000;
 
     //Imagenes
-    private ImageIcon loadImage = new ImageIcon("src\\capcomImages\\aki.png");
+    private ImageIcon loadImage = new ImageIcon("src\\Images\\Air.png");
 
     public ImageIcon getBorderType(CharacterTypeEnum type) {
 
