@@ -46,7 +46,7 @@ public class CharacterBuilder {
             //numero random para saber si es evolucion o no
             boolean isSpecial = Math.random() > CharacterTypeEnum.getEvolPercentage();
             //Agarra un tipo de elemento (AIRE, AGUA, TIERRA, FUEGO, LUZ O OSCURIDAD)
-            chType = CharacterTypeEnum.byId((int) Math.random()*CharacterTypeEnum.getSpecialLimit());
+            chType = CharacterTypeEnum.byId((int) (Math.random() * CharacterTypeEnum.getSpecialLimit()));
             
             if(isSpecial)
                 chType = CharacterTypeEnum.byId(chType.getId()+ (1+CharacterTypeEnum.getSpecialLimit()));

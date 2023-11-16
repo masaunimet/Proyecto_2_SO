@@ -22,6 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame(Buffer buffer) {
         this.buffer = buffer;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
