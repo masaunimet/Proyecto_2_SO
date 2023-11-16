@@ -4,62 +4,64 @@
  * and open the template in the editor.
  */
 package DB;
+
 import Character.Character;
 import Enums.CharacterTypeEnum;
 import Primitives.Queue;
 import java.awt.Image;
 import java.util.concurrent.Semaphore;
 import javax.swing.ImageIcon;
+
 /**
  *
  * @author Andres
  */
 public class Buffer {
-    
+
     //Personajes
     private final Character[] nintendoCharacters = new Character[20];
     private final Character[] capcomCharacters = new Character[20];
-    
+
     //colas de Victoria
-    private Queue capcomWinningQueue;
-    private Queue nintendoWinningQueue;
-    
+    private Queue capcomWinningQueue = new Queue();
+    private Queue nintendoWinningQueue = new Queue();
+
     //Colas de prioridad Nintendo
-    private Queue nintendoQueue1;
-    private Queue nintendoQueue2;
-    private Queue nintendoQueue3;
-    private Queue nintendoQueue4;
+    private Queue nintendoQueue1 = new Queue();
+    private Queue nintendoQueue2 = new Queue();
+    private Queue nintendoQueue3 = new Queue();
+    private Queue nintendoQueue4 = new Queue();
 
     //Colas de prioradad Capcom
-    private Queue capcomQueue1;
-    private Queue capcomQueue2;
-    private Queue capcomQueue3;
-    private Queue capcomQueue4;
-    
+    private Queue capcomQueue1 = new Queue();
+    private Queue capcomQueue2 = new Queue();
+    private Queue capcomQueue3 = new Queue();
+    private Queue capcomQueue4 = new Queue();
+
     //Semaforos de sincornización
     private final Semaphore s1 = new Semaphore(0);
     private final Semaphore s2 = new Semaphore(0);
 
     //Ciclo de revision
-    private int numberOfCycles;
-    
+    private int numberOfCycles = 0;
+
     //Fighters
     private Character nintendoFighter;
     private Character capcomFighter;
-    
+
     //Velocidad de simulacion
-    private double simSpeed;
-    private double simLoad = 2;
-    private double nextSim = 4;
-    
+    private double simSpeed = 1000;
+    private double simLoad = 2000;
+    private double nextSim = 4000;
+
     //Imagenes
-    private ImageIcon loadImage = new ImageIcon("/capcomImages/aki.png");
-    
-    public ImageIcon getBorderType(CharacterTypeEnum type){
-    
+    private ImageIcon loadImage = new ImageIcon("src\\capcomImages\\aki.png");
+
+    public ImageIcon getBorderType(CharacterTypeEnum type) {
+
         ImageIcon border = null;
-        
-        switch(type){
+
+        switch (type) {
             case AIR:
                 border = new ImageIcon("/...");
                 break;
@@ -102,10 +104,10 @@ public class Buffer {
             default:
                 throw new AssertionError(type.name());
         }
-        
+
         return border;
     }
-    
+
     /**
      * @return the nintendoCharacters
      */
@@ -357,7 +359,6 @@ public class Buffer {
     public void setNextSim(double nextSim) {
         this.nextSim = nextSim;
     }
-    
 
     /**
      * @return the loadImage

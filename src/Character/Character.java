@@ -21,6 +21,7 @@ public class Character implements Cloneable{
     private TierEnum tier;
     private int power;
     private String image;
+    private String pathToFrame;
     private int tierColdown;
 
     public Character() {tierColdown = 0;}
@@ -31,6 +32,12 @@ public class Character implements Cloneable{
         this.characterType = characterType;
         this.companyType = companyType;
         this.power = power;
+        this.image = pathToImage;
+        tierColdown = 0;
+    }
+    public Character(String name, CompanyEnum companyType , String pathToImage) {
+        this.name = name;
+        this.companyType = companyType;
         this.image = pathToImage;
         tierColdown = 0;
     }
@@ -112,5 +119,19 @@ public class Character implements Cloneable{
     
     public void setTierColdown(int tierColdown) {
         this.tierColdown = tierColdown;
+    }
+
+    /**
+     * @return the pathToFrame
+     */
+    public String getPathToFrame() {
+        return pathToFrame;
+    }
+
+    /**
+     * @param pathToFrame the pathToFrame to set
+     */
+    public void setPathToFrame(String pathToFrame) {
+        this.pathToFrame = pathToFrame;
     }
 }

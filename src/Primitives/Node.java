@@ -9,7 +9,7 @@ public class Node {
     
     private Character data;
     private Node pNext;
-    private int turnsQueued;
+    private int turnsQueued = 0;
     private int id;
 
     public Node(Character data){

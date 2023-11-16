@@ -26,7 +26,7 @@ public class Functions {
                         buffer.getCapcomQueue2().queue(character);
                         break;
                     case STRONG:
-                        buffer.getCapcomQueue3().queue(character);
+                        buffer.getCapcomQueue1().queue(character);
                         break;
                 }
                 break;
@@ -39,7 +39,7 @@ public class Functions {
                         buffer.getNintendoQueue2().queue(character);
                         break;
                     case STRONG:
-                        buffer.getNintendoQueue3().queue(character);
+                        buffer.getNintendoQueue1().queue(character);
                         break;
                 }
         }

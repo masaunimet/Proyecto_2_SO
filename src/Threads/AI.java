@@ -36,11 +36,11 @@ public class AI extends Thread {
     private final Buffer buffer;
     private final MainFrame window;
 
-    public AI(Buffer buffer, MainFrame window){
+    public AI(Buffer buffer, MainFrame window) {
         this.buffer = buffer;
         this.window = window;
     }
-    
+
     //TODO: Hacer que se actualice el MainFrame 
     @Override
     public void run() {
@@ -55,43 +55,50 @@ public class AI extends Thread {
                     Logger.getLogger(Administrator.class.getName()).log(Level.SEVERE, null, ex);
 
                 }
-                
+
                 //Estado de carga
                 window.getNintendoFighterPicture().setIcon(buffer.getLoadImage());
                 window.getCapcomFighterPicture().setIcon(buffer.getLoadImage());
-                
+
                 window.getCapcomFighterScore().setText("");
                 window.getNintendoFighterScore().setText("");
-                    
+
                 window.getCapcomFighterName().setText("");
                 window.getNintendoFighterName().setText("");
-                
+
                 window.getCapcomFighterFrame().setIcon(null);
                 window.getNintendoFighterFrame1().setIcon(null);
-                
+
                 sleep((long) buffer.getSimLoad());
-                
+
                 Character capcom = buffer.getCapcomFighter();
                 Character nintendo = buffer.getNintendoFighter();
-                
+
                 if (capcom != null && nintendo != null) {
-                    
+
+                    System.out.println(capcom.getName());
+                    System.out.println(nintendo.getName());
+
                     window.getCapcomFighterFrame().setIcon(buffer.getBorderType(capcom.getCharacterType()));
                     window.getNintendoFighterFrame1().setIcon(buffer.getBorderType(nintendo.getCharacterType()));
-                
-                    window.getCapcomFighterScore().setText(capcom.getPower()+"");
-                    window.getNintendoFighterScore().setText(nintendo.getPower()+"");
-                    
+
+                    window.getCapcomFighterScore().setText(capcom.getPower() + "");
+                    window.getNintendoFighterScore().setText(nintendo.getPower() + "");
+
                     window.getCapcomFighterName().setText(capcom.getName());
                     window.getNintendoFighterName().setText(nintendo.getName());
-                    
-                    window.getNintendoFighterPicture().setIcon(new ImageIcon(nintendo.getImage()));
-                    window.getCapcomFighterPicture().setIcon(new ImageIcon(capcom.getImage()));
+
+                    ImageIcon iconNintendo = new ImageIcon(nintendo.getImage());
+                    ImageIcon iconCapcom = new ImageIcon(capcom.getImage());
+                    System.out.println(nintendo.getImage());
+                    window.getNintendoFighterPicture().setIcon(iconNintendo);
+                    window.getCapcomFighterPicture().setIcon(iconCapcom);
 
                     //Estado de batalla
                     sleep((long) buffer.getSimSpeed());
 
-                    int randNum = (int) Math.random() * 100;
+                    int randNum = (int) (Math.random() * 100);
+                    System.out.println("Numero random: " + randNum);
 
                     if (randNum < 40) {
 
@@ -105,16 +112,23 @@ public class AI extends Thread {
                             buffer.getCapcomWinningQueue().queue(nintendo);
                             window.getCapcomWinner().setText("LOSER");
                             window.getNintendoWinner().setText("WINNER");
+                            int nintendoScore = Integer.parseInt(window.getNintendoScore().getText());
+                            nintendoScore++;
+                            window.getNintendoScore().setText(String.valueOf(nintendoScore));
                         } else {
                             buffer.getCapcomWinningQueue().queue(capcom);
                             window.getCapcomWinner().setText("WINNER");
                             window.getNintendoWinner().setText("LOSER");
+                            int capcomScore = Integer.parseInt(window.getCapcomScore().getText());
+                            capcomScore++;
+                            window.getCapcomScore().setText(String.valueOf(capcomScore));
+
                         }
                     } else if (randNum < 67) {
 
                         getToTierQueue(capcom);
                         getToTierQueue(nintendo);
-                        
+
                         window.getCapcomWinner().setText("TIE");
                         window.getNintendoWinner().setText("TIE");
                     } else {
@@ -123,21 +137,24 @@ public class AI extends Thread {
                         getToTierQueue(capcom);
                         nintendo.setTier(TierEnum.FIX);
                         getToTierQueue(nintendo);
-                        
+
                         window.getCapcomWinner().setText("FIX");
                         window.getNintendoWinner().setText("FIX");
                     }
-                } 
-                
-                window.getCapcomFighterScore().setText(capcom.getPower()+"");
-                window.getNintendoFighterScore().setText(nintendo.getPower()+"");
-                
-                 //Estado de Siguiente batalla o culminacion de una
+                } else {
+                    System.out.println("no hay personaje");
+                }
+
+//                window.getCapcomFighterScore().setText(capcom.getPower()+"");
+                //           window.getNintendoFighterScore().setText(nintendo.getPower()+"");
+                //Estado de Siguiente batalla o culminacion de una
                 sleep((long) buffer.getNextSim());
-                
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(AI.class.getName()).log(Level.SEVERE, null, ex);
             }
+            window.getCapcomWinner().setText("");
+            window.getNintendoWinner().setText("");
         }
     }
 
@@ -249,23 +266,45 @@ public class AI extends Thread {
     }
 
     private void getToTierQueue(Character ch) {
+        switch (ch.getCompanyType()) {
+            case CAPCOM:
+                switch (ch.getTier()) {
 
-        switch (ch.getTier()) {
+                    case WEAK:
+                        buffer.getCapcomQueue3().queue(ch);
+                        break;
+                    case NORMAL:
+                        buffer.getCapcomQueue2().queue(ch);
+                        break;
+                    case STRONG:
+                        buffer.getCapcomQueue1().queue(ch);
+                        break;
+                    case FIX:
+                        buffer.getCapcomQueue4().queue(ch);
+                        break;
+                    default:
+                        throw new AssertionError(ch.getTier().name());
+                }
+                break;
+            case NINTENDO:
+                switch (ch.getTier()) {
 
-            case WEAK:
-                buffer.getCapcomQueue3().queue(ch);
+                    case WEAK:
+                        buffer.getNintendoQueue3().queue(ch);
+                        break;
+                    case NORMAL:
+                        buffer.getNintendoQueue2().queue(ch);
+                        break;
+                    case STRONG:
+                        buffer.getNintendoQueue1().queue(ch);
+                        break;
+                    case FIX:
+                        buffer.getNintendoQueue4().queue(ch);
+                        break;
+                    default:
+                        throw new AssertionError(ch.getTier().name());
+                }
                 break;
-            case NORMAL:
-                buffer.getCapcomQueue2().queue(ch);
-                break;
-            case STRONG:
-                buffer.getCapcomQueue1().queue(ch);
-                break;
-            case FIX:
-                buffer.getCapcomQueue4().queue(ch);
-                break;
-            default:
-                throw new AssertionError(ch.getTier().name());
         }
     }
 }
